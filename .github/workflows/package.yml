@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+    
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+      - name: Install vsce
+        run: npm i -g @vscode/vsce
+      - name: Build and upload package
+        run: |
+          vsce package
+          gh release upload ${{github.event.release.tag_name}} dealii-prm-file-highlighting-${{github.event.release.tag_name}}.vsix
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        shell: bash
+          
