@@ -1,0 +1,88 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "deal.II parameter files",
+    "foldingStartMarker": "subsectionb",
+    "foldingEndMarker": "end",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.dealii-prm",
+                    "match": "end"
+                },
+                {
+                    "match": "(?:\\s*)(#.*)",
+                    "name": "comment.line"
+                },
+                {
+                    "match": "(?:\\s*)(set) ?(.+?)(?:\\s+?(=)\\s+?)([^#]*)(#.*)?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.dealii-prm"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.dealii-prm"
+                        },
+                        "3": {
+                            "name": "keyword.operator.arithmetic.c++"
+                        },
+                        "4":{
+                            "name": "variable.other"
+                        },
+                        "5": {
+                            "name": "comment.line"
+                        }
+                    }
+                },
+                {
+                    "match": "(?:\\s*)(subsection) ?([^#]*)(#.*)?",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.dealii-prm"
+                        },
+                        "2": {
+                            "name": "string.unquoted"
+                        },
+                        "3": {
+                            "name": "comment.line"
+                        }
+                    }
+                },
+                {
+                    "match": "(?:\\s*)(include) ?([^#]*)(#.*)?",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.dealii-prm"
+                        },
+                        "2": {
+                            "name": "variable.other"
+                        },
+                        "3": {
+                            "name": "comment.line"
+                        }
+                    }
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.dealii-prm",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.dealii-prm",
+                    "match": "\\\\."
+                }
+            ]
+        }
+    },
+    "scopeName": "source.dealii-prm"
+}

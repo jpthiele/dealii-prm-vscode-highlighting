@@ -1,0 +1,28 @@
+{
+  "name": "dealii-prm-file-highlighting",
+  "displayName": "deal.II Parameter File Highlighting",
+  "description": "Code highlighting for .prm files used in deal.II",
+  "icon": "images/dealii-logo.png",
+  "version": "1.0.0",
+  "publisher": "jpthiele",
+  "repository": "github.com/jpthiele/dealii-prm-vscode-highlighting",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "dealii-prm",
+      "aliases": ["deal.II parameter files", "dealii-prm"],
+      "extensions": [".prm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "dealii-prm",
+      "scopeName": "source.dealii-prm",
+      "path": "./syntaxes/dealii-prm.tmLanguage.json"
+    }]
+  }
+}
